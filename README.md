@@ -52,18 +52,23 @@ The route name and CRM adapter will be finalized during the implementation phase
 
 ### Run locally
 
-The repository is currently in the planning/setup phase and does not yet include a `package.json` or runnable Next.js app. After the application scaffold is added, use:
+Install dependencies and start the Next.js App Router application:
 
 ```bash
 git clone <repository-url>
-cd frontend-ai-capstone
+cd ai-lead-qualifier
 npm install
-cp .env.example .env.local
-# Add the required server-side AI provider key to .env.local.
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the widget. Never commit `.env.local` or expose provider keys through `NEXT_PUBLIC_*` variables.
+
+Run the validation tests and production build with:
+
+```bash
+npm test
+npm run build
+```
 
 ## Roadmap
 - [ ] Phase 1: Environment & Toolchain Setup (FE-01)
