@@ -1,4 +1,4 @@
-interface HealthData {
+﻿interface HealthData {
   status: string;
   uptime: number;
   timestamp: string;
@@ -8,9 +8,12 @@ interface HealthData {
 }
 
 async function getHealthData(): Promise<HealthData> {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const host = process.env.VERCEL_URL 
+    ? `https://${process.env.VERCEL_URL}` 
+    : (process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000");
+
   try {
-    const res = await fetch(`${baseUrl}/api/health`, { cache: "no-store" });
+    const res = await fetch(`${host}/api/health`, { cache: "no-store" });
     if (!res.ok) throw new Error("Health check failed");
     return res.json();
   } catch {
